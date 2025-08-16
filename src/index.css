@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+	background-color: white;
+	font-size: 12px;
+	font-family: "poppin", sans-serif;
+}
+.scrollbar-hide {
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+	display: none;
+}
+
+@keyframes fade-in {
+	from {
+		opacity: 0;
+		transform: translateY(-20px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes slide-up {
+	from {
+		opacity: 0;
+		transform: translateY(30px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+.animate-fade-in {
+	animation: fade-in 0.6s ease-out forwards;
+}
+
+.animate-slide-up {
+	animation: slide-up 0.5s ease-out forwards;
+}
+
+.scrollbar-hide {
+	scrollbar-width: none;
+	-ms-overflow-style: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+	display: none;
+}
+
+.zigzag-curved {
+	position: relative;
+	width: 100%;
+	padding-top: 50px;
+	/* background: linear-gradient(135deg, #939ffb 0%, #f55c57 100%); */
+	background: rgba(0, 0, 0, 0.921);
+	display: flex;
+	align-items: flex-start;
+	color: grey;
+	clip-path: url(#curved-zigzag);
+}
