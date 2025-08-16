@@ -13,7 +13,6 @@ const Footer = () => {
       </svg>
       
       <div className="w-full max-w-7xl mx-auto px-6 py-12 pt-20">
-        {/* Top Section - Company Info */}
         <div className="mb-8 text-white">
           <h2 className="text-3xl font-bold mb-4">BLIND</h2>
           <p className="text-sm leading-relaxed opacity-90 max-w-2xl">
@@ -36,7 +35,6 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Services and Quick Links - 2 columns on mobile */}
         <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-8 text-white mb-8">
           {/* Services */}
           <div className="space-y-4">
@@ -50,8 +48,6 @@ const Footer = () => {
               <li><a href="#" className="opacity-80 hover:opacity-100 hover:underline transition-all duration-200">API Services</a></li>
             </ul>
           </div>
-
-          {/* Quick Links */}
           <div className="space-y-4">
             <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2 text-sm">

@@ -4,7 +4,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useGSAP } from "@gsap/react";
 
-// Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
 
 const BLINDServices = [
@@ -73,7 +72,6 @@ const Services = () => {
 				}
 			});
 
-			// Simple title fade up
 			tl.fromTo(titleRef.current,
 				{
 					y: 30,
@@ -87,7 +85,6 @@ const Services = () => {
 				}
 			);
 
-			// Cards slide in from bottom with stagger
 			tl.fromTo(cardsRef.current.children,
 				{
 					y: 50,
@@ -103,7 +100,6 @@ const Services = () => {
 				"-=0.4"
 			);
 
-			// Buttons fade in
 			tl.fromTo(buttonsRef.current,
 				{
 					opacity: 0

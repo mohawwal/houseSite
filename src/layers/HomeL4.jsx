@@ -3,7 +3,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 
-// Register ScrollTrigger plugin
+
 gsap.registerPlugin(ScrollTrigger);
 
 const HomeL4 = () => {
@@ -13,7 +13,6 @@ const HomeL4 = () => {
 
 	useGSAP(() => {
 		const ctx = gsap.context(() => {
-			// Left card animation
 			gsap.fromTo(leftCardRef.current,
 				{
 					opacity: 0,
@@ -32,7 +31,6 @@ const HomeL4 = () => {
 				}
 			);
 
-			// Right card animation
 			gsap.fromTo(rightCardRef.current,
 				{
 					opacity: 0,
@@ -51,7 +49,6 @@ const HomeL4 = () => {
 				}
 			);
 
-			// Hover animations
 			leftCardRef.current.addEventListener('mouseenter', () => {
 				gsap.to(leftCardRef.current, {
 					scale: 1.02,

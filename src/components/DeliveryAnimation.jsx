@@ -1,22 +1,21 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Truck, Package, Container, Bike } from 'lucide-react';
+import { useGSAP } from '@gsap/react';
 
 const DeliveryAnimation = () => {
   const [leftVanPosition, setLeftVanPosition] = useState(0);
   const [rightVanPosition, setRightVanPosition] = useState(95);
-  const [leftDirection, setLeftDirection] = useState(1); // 1 for down, -1 for up
-  const [rightDirection, setRightDirection] = useState(-1); // -1 for up, 1 for down
+  const [leftDirection, setLeftDirection] = useState(1);
+  const [rightDirection, setRightDirection] = useState(-1);
   const [showLeftBox, setShowLeftBox] = useState(false);
   const [showRightBox, setShowRightBox] = useState(false);
 
-  useEffect(() => {
+  useGSAP(() => {
     const animationInterval = setInterval(() => {
-      // Left van movement
       setLeftVanPosition((prev) => {
         let newPos = prev + (leftDirection * 2.5);
         
-        // Check boundaries and reverse direction
         if (newPos >= 95) {
           newPos = 95;
           setLeftDirection(-1);
@@ -25,17 +24,14 @@ const DeliveryAnimation = () => {
           setLeftDirection(1);
         }
         
-        // Show box when van is at bottom (position 90-95)
         setShowLeftBox(newPos >= 85);
         
         return newPos;
       });
 
-      // Right van movement (starts going up)
       setRightVanPosition((prev) => {
         let newPos = prev + (rightDirection * 2.5);
         
-        // Check boundaries and reverse direction
         if (newPos >= 95) {
           newPos = 95;
           setRightDirection(-1);
@@ -44,13 +40,11 @@ const DeliveryAnimation = () => {
           setRightDirection(1);
         }
         
-        // Show box when van is at bottom (position 90-95)
         setShowRightBox(newPos >= 85);
         
         return newPos;
       });
 
-      // Update directions
       setLeftDirection((prev) => {
         if (leftVanPosition >= 95) return -1;
         if (leftVanPosition <= 0) return 1;
@@ -63,14 +57,13 @@ const DeliveryAnimation = () => {
         return prev;
       });
 
-    }, 40); // Faster animation interval
+    }, 40);
 
     return () => clearInterval(animationInterval);
   }, [leftVanPosition, rightVanPosition, leftDirection, rightDirection]);
 
   return (
     <div className="absolute inset-0 pointer-events-none overflow-hidden">
-      {/* Left side van */}
       <motion.div
         className="absolute left-6 text-white transition-all duration-100 ease-linear"
         style={{
@@ -93,7 +86,6 @@ const DeliveryAnimation = () => {
         />
       </motion.div>
 
-      {/* Left delivery box */}
       <AnimatePresence>
         {showLeftBox && (
           <motion.div
@@ -120,7 +112,6 @@ const DeliveryAnimation = () => {
         )}
       </AnimatePresence>
 
-      {/* Right side van */}
       <motion.div
         className="absolute right-6 text-white transition-all duration-100 ease-linear"
         style={{
@@ -143,7 +134,6 @@ const DeliveryAnimation = () => {
         />
       </motion.div>
 
-      {/* Right delivery box */}
       <AnimatePresence>
         {showRightBox && (
           <motion.div

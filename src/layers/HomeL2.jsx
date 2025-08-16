@@ -5,7 +5,6 @@ import { TableCellsMerge } from "lucide-react";
 import DeliveryAnimation from "../components/DeliveryAnimation";
 import { useGSAP } from "@gsap/react";
 
-// Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
 
 const About = () => {
@@ -21,7 +20,6 @@ const About = () => {
 
 	useGSAP(() => {
 		const ctx = gsap.context(() => {
-			// Create main timeline
 			const tl = gsap.timeline({
 				scrollTrigger: {
 					trigger: sectionRef.current,
@@ -31,7 +29,6 @@ const About = () => {
 				}
 			});
 
-			// Animate left panel sliding in from left
 			tl.fromTo(leftPanelRef.current,
 				{
 					x: -100,
@@ -45,7 +42,6 @@ const About = () => {
 				}
 			);
 
-			// Animate right panel sliding in from right
 			tl.fromTo(rightPanelRef.current,
 				{
 					x: 100,
@@ -57,10 +53,9 @@ const About = () => {
 					duration: 1,
 					ease: "power2.out"
 				},
-				"-=0.7" // Start 0.7s before previous animation ends
+				"-=0.7" 
 			);
 
-			// Animate overlay fade in
 			tl.fromTo(overlayRef.current,
 				{
 					opacity: 0
@@ -73,7 +68,6 @@ const About = () => {
 				"-=0.5"
 			);
 
-			// Animate mobile text with typing effect
 			if (textMobileRef.current) {
 				tl.fromTo(textMobileRef.current,
 					{
@@ -92,7 +86,6 @@ const About = () => {
 				);
 			}
 
-			// Animate desktop text with slide up effect
 			if (textDesktopRef.current) {
 				tl.fromTo(textDesktopRef.current,
 					{
@@ -110,8 +103,6 @@ const About = () => {
 					"-=0.5"
 				);
 			}
-
-			// Animate delivery animations with simple fade
 			if (deliveryAnimationMobileRef.current) {
 				tl.fromTo(deliveryAnimationMobileRef.current,
 					{
@@ -140,7 +131,6 @@ const About = () => {
 				);
 			}
 
-			// Animate service card with slide and bounce
 			tl.fromTo(serviceCardRef.current,
 				{
 					x: -120,
@@ -158,8 +148,6 @@ const About = () => {
 				},
 				"-=0.4"
 			);
-
-			// Add subtle service card floating animation only
 			gsap.to(serviceCardRef.current, {
 				y: -3,
 				duration: 2,
